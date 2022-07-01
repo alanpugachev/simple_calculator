@@ -1,6 +1,7 @@
 // ignore_for_file: deprecated_member_use
 
 import 'package:flutter/material.dart';
+import 'package:simple_calculator/logic.dart';
 
 class Home extends StatefulWidget {
   const Home({Key? key}) : super(key: key);
