@@ -17,6 +17,29 @@ void calculate(btnText) {
     finalResult = '';
     opr = '';
   }
+  else if (btnText == '+' || btnText == '-' || btnText == '/' || btnText == '*') {
+    opr = btnText;
+
+    if (numOne == 0) {
+      numOne = double.parse(result);
+    }
+    else {
+      numTwo = double.parse(result);
+    }
+
+    if (opr == '+') {
+      add();
+    }
+    else if (opr == '-') {
+      substract();
+    }
+    else if (opr == '/') {
+      divide();
+    }
+    else if (opr == '*') {
+      multiply();
+    }
+  }
 }
 
 String add() {
@@ -33,6 +56,12 @@ String substract() {
 
 String divide() {
   result = (numOne / numTwo).toString();
+  numOne = double.parse(result);
+  return result;
+}
+
+String multiply() {
+  result = (numOne * numTwo).toString();
   numOne = double.parse(result);
   return result;
 }
