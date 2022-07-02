@@ -45,7 +45,7 @@ class _HomeState extends State<Home> {
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
                 Padding(padding: EdgeInsets.all(10.0),
-                  child: Text('0',
+                  child: Text('$text',
                     textAlign: TextAlign.left,
                     style: TextStyle(
                       color: Colors.white,

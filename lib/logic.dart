@@ -21,10 +21,18 @@ void calculate(btnText) {
     opr = btnText;
 
     if (opr == '+') {
-      add();
-      print(result);
+      finalResult = add();
+      text = finalResult.toString();
     }
-    //TODO
+    else if (opr == '-') {
+      finalResult = substract();
+    }
+    else if (opr == '/') {
+      finalResult = divide();
+    }
+    else if (opr == '*') {
+      finalResult = multiply();
+    }
   }
   else if (btnText == '=') {
 
