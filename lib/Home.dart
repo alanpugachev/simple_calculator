@@ -15,7 +15,7 @@ class _HomeState extends State<Home> {
     return Container(
       child: RaisedButton(
         onPressed: (){
-
+          calculate(text);
         },
         child: Text(
           text, 
@@ -101,7 +101,7 @@ class _HomeState extends State<Home> {
                 RaisedButton(
                   padding: EdgeInsets.fromLTRB(34, 20, 128, 20),
                   onPressed: () { 
-
+                    calculate('0');
                   },
                   child: Text(
                     '0',

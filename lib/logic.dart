@@ -20,24 +20,21 @@ void calculate(btnText) {
   else if (btnText == '+' || btnText == '-' || btnText == '/' || btnText == '*') {
     opr = btnText;
 
-    if (numOne == 0) {
-      numOne = double.parse(result);
-    }
-    else {
-      numTwo = double.parse(result);
-    }
-
     if (opr == '+') {
       add();
+      print(result);
     }
-    else if (opr == '-') {
-      substract();
+    //TODO
+  }
+  else if (btnText == '=') {
+
+  }
+  else if (double.tryParse(btnText) != null) {
+    if (numOne == 0) {
+      numOne = double.parse(btnText);
     }
-    else if (opr == '/') {
-      divide();
-    }
-    else if (opr == '*') {
-      multiply();
+    else {
+      numTwo = double.parse(btnText);
     }
   }
 }
