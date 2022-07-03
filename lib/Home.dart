@@ -122,6 +122,8 @@ class _HomeState extends State<Home> {
     );
   }
 
+
+
   dynamic text ='0';
   double numOne = 0;
   double numTwo = 0;
@@ -135,11 +137,18 @@ class _HomeState extends State<Home> {
       numOne = 0;
       numTwo = 0;
       result = '';
-      finalResult = '';
+      finalResult = '0';
       opr = '';
     }
     else if (btnText == '+' || btnText == '-' || btnText == '/' || btnText == '*') {
       opr = btnText;
+
+      if (numOne == 0) {
+        numOne = double.parse(result);
+      }
+      else {
+        numTwo = double.parse(result);
+      }
 
       if (opr == '+') {
         finalResult = add();
@@ -157,13 +166,9 @@ class _HomeState extends State<Home> {
     else if (btnText == '=') {
 
     }
-    else if (double.tryParse(btnText) != null) {
-      if (numOne == 0) {
-        numOne = double.parse(btnText);
-      }
-      else {
-        numTwo = double.parse(btnText);
-      }
+    else {
+      result = result + btnText;
+      finalResult = result;
     }
 
     setState(() {
