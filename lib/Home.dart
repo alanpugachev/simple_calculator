@@ -1,7 +1,4 @@
-// ignore_for_file: deprecated_member_use
-
 import 'package:flutter/material.dart';
-import 'package:simple_calculator/logic.dart';
 
 class Home extends StatefulWidget {
   const Home({Key? key}) : super(key: key);
@@ -16,6 +13,8 @@ class _HomeState extends State<Home> {
       child: RaisedButton(
         onPressed: (){
           calculate(text);
+          setState(() {
+          });
         },
         child: Text(
           text, 
@@ -121,5 +120,78 @@ class _HomeState extends State<Home> {
         ),
       ),
     );
+  }
+
+  dynamic text ='0';
+  double numOne = 0;
+  double numTwo = 0;
+  dynamic result = '';
+  dynamic finalResult = '';
+  dynamic opr = '';
+
+  void calculate(btnText) {
+    if (btnText == 'AC') {
+      text = '0';
+      numOne = 0;
+      numTwo = 0;
+      result = '';
+      finalResult = '';
+      opr = '';
+    }
+    else if (btnText == '+' || btnText == '-' || btnText == '/' || btnText == '*') {
+      opr = btnText;
+
+      if (opr == '+') {
+        finalResult = add();
+      }
+      else if (opr == '-') {
+        finalResult = substract();
+      }
+      else if (opr == '/') {
+        finalResult = divide();
+      }
+      else if (opr == '*') {
+        finalResult = multiply();
+      }
+    }
+    else if (btnText == '=') {
+
+    }
+    else if (double.tryParse(btnText) != null) {
+      if (numOne == 0) {
+        numOne = double.parse(btnText);
+      }
+      else {
+        numTwo = double.parse(btnText);
+      }
+    }
+
+    setState(() {
+      text = finalResult.toString();
+    });
+  }
+
+  String add() {
+    result = (numOne + numTwo).toString();
+    numOne = double.parse(result);
+    return result;
+  }
+
+  String substract() {
+    result = (numOne - numTwo).toString();
+    numOne = double.parse(result);
+    return result;
+  }
+
+  String divide() {
+    result = (numOne / numTwo).toString();
+    numOne = double.parse(result);
+    return result;
+  }
+
+  String multiply() {
+    result = (numOne * numTwo).toString();
+    numOne = double.parse(result);
+    return result;
   }
 }
