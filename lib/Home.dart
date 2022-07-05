@@ -123,80 +123,105 @@ class _HomeState extends State<Home> {
   }
 
 
+  // //old logic
+  // dynamic text ='0';
+  // double numOne = 0;
+  // double numTwo = 0;
+  // dynamic result = '';
+  // dynamic finalResult = '';
+  // dynamic opr = '';
 
-  dynamic text ='0';
+  // void calculate(btnText) {
+  //   if (btnText == 'AC') {
+  //     text = '0';
+  //     numOne = 0;
+  //     numTwo = 0;
+  //     result = '';
+  //     finalResult = '0';
+  //     opr = '';
+  //   }
+  //   else if (btnText == '+' || btnText == '-' || btnText == '/' || btnText == '*') {
+  //     opr = btnText;
+
+  //     if (numOne == 0) {
+  //       numOne = double.parse(result);
+  //     }
+  //     else {
+  //       numTwo = double.parse(result);
+  //     }
+
+  //     if (opr == '+') {
+  //       finalResult = add();
+  //     }
+  //     else if (opr == '-') {
+  //       finalResult = substract();
+  //     }
+  //     else if (opr == '/') {
+  //       finalResult = divide();
+  //     }
+  //     else if (opr == '*') {
+  //       finalResult = multiply();
+  //     }
+  //   }
+  //   else if (btnText == '=') {
+
+  //   }
+  //   else {
+  //     result = result + btnText;
+  //     finalResult = result;
+  //   }
+
+  //   setState(() {
+  //     text = finalResult.toString();
+  //   });
+  // }
+
+  // String add() {
+  //   result = (numOne + numTwo).toString();
+  //   numOne = double.parse(result);
+  //   return result;
+  // }
+
+  // String substract() {
+  //   result = (numOne - numTwo).toString();
+  //   numOne = double.parse(result);
+  //   return result;
+  // }
+
+  // String divide() {
+  //   result = (numOne / numTwo).toString();
+  //   numOne = double.parse(result);
+  //   return result;
+  // }
+
+  // String multiply() {
+  //   result = (numOne * numTwo).toString();
+  //   numOne = double.parse(result);
+  //   return result;
+  // }
+
+
+  //main variables
   double numOne = 0;
   double numTwo = 0;
-  dynamic result = '';
-  dynamic finalResult = '';
   dynamic opr = '';
+  dynamic result = '';
+
+  //support variables
+  dynamic previousBtnText = '';
+  dynamic finalResult = '';
+  dynamic text = '';
 
   void calculate(btnText) {
-    if (btnText == 'AC') {
-      text = '0';
-      numOne = 0;
-      numTwo = 0;
-      result = '';
-      finalResult = '0';
-      opr = '';
+    if (previousBtnText == '' && double.tryParse(btnText) != null) {
+      text = text + btnText;
+      numOne = double.parse(text);
     }
-    else if (btnText == '+' || btnText == '-' || btnText == '/' || btnText == '*') {
+    else if ((btnText == '+' || btnText == '-' || btnText == '*' || btnText == '/')) {
       opr = btnText;
-
-      if (numOne == 0) {
-        numOne = double.parse(result);
-      }
-      else {
-        numTwo = double.parse(result);
-      }
-
-      if (opr == '+') {
-        finalResult = add();
-      }
-      else if (opr == '-') {
-        finalResult = substract();
-      }
-      else if (opr == '/') {
-        finalResult = divide();
-      }
-      else if (opr == '*') {
-        finalResult = multiply();
-      }
-    }
-    else if (btnText == '=') {
-
-    }
-    else {
-      result = result + btnText;
-      finalResult = result;
+      previousBtnText = opr;
     }
 
-    setState(() {
-      text = finalResult.toString();
-    });
-  }
-
-  String add() {
-    result = (numOne + numTwo).toString();
-    numOne = double.parse(result);
-    return result;
-  }
-
-  String substract() {
-    result = (numOne - numTwo).toString();
-    numOne = double.parse(result);
-    return result;
-  }
-
-  String divide() {
-    result = (numOne / numTwo).toString();
-    numOne = double.parse(result);
-    return result;
-  }
-
-  String multiply() {
-    result = (numOne * numTwo).toString();
-    numOne = double.parse(result);
-    return result;
+    //TODO add functionality for numTwo
   }
 }
